@@ -1,0 +1,125 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#define mask (1<<2)
+#define MAX_LENGTH 1000
+void sort(int *ptr,int size)
+{
+    int i,j,temp;
+    for(j=0;j<size-1;j++)
+    {
+        for(i=0;i<size-1;i++)
+        {
+            if(ptr[i]>ptr[i+1])
+            {
+                temp=ptr[i];
+                ptr[i]=ptr[i+1];
+                ptr[i+1]=temp;
+            }
+        }
+    }
+   
+}
+
+void removeSp(char *str) 
+{
+    int i = 0, j = 0;
+    while (str[i]!='\0') 
+    {
+        if (str[i]>='a' && str[i]<='z' || str[i]>='A' && str[i]<='Z') 
+        {
+            str[j++] = str[i];
+        }
+        i++;
+    }
+    str[j] = '\0';
+}
+
+void array(int arr[],int size)
+{
+     int i,j,temp;
+    printf("enter a size of array\n");
+    scanf("%d",&size);
+    int *ptr=(int*)malloc(sizeof(int));
+    printf("enter a array elemets\n");
+    for(i=0;i<size;i++)
+    {
+        scanf("%d",(ptr+i));
+    }
+  sort(ptr,size);
+    printf("\nafter sorting elemets are\n");
+    for(i=0;i<size;i++)
+    {
+        printf("%d\t",*(ptr+i));
+    }
+     
+}
+void string()
+{
+    char str[MAX_LENGTH];
+    printf("Enter a string: ");
+    scanf("%s",str);
+    removeSp(str);
+    printf("string=%s\n", str);
+}
+void bitwise(int n)
+{
+    int i;
+    printf("enter a number\n");
+    scanf("%d",&n);
+    for(i=7;i>=0;i--)
+    {
+        printf("%d",((n>>i)&1));
+    }
+    printf("\n");
+    n=n^mask;
+    for(i=7;i>=0;i--)
+    {
+        printf("%d",((n>>i)&1));
+    }
+    printf("\n");
+    printf("%d\n",n);
+}
+int main()
+{
+    int size,n,l;
+    char str[30];
+    int arr[size];
+    
+   printf("1.array\n2.string\n3.bitwise\n4.exit");
+   int choice;
+   while(1)
+   {
+     printf("\nenter a choice\n");
+     scanf("%d",&choice);
+     switch(choice)
+   {
+       case 1:
+       {
+           array(arr,size);
+           break;
+       }
+       case 2:
+       {
+           string();
+           break;
+       }
+       case 3:
+       {
+           bitwise(n);
+           break;
+       }
+       case 4:
+       {
+           printf("exiting...\n");
+           exit(0);
+           break;
+       }
+       default:
+       {
+           printf("invalid choice\n");
+       }
+   }
+   }
+}
+
