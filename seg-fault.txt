@@ -1,0 +1,39 @@
+i// modifiying string literals
+#include<stdio.h>
+int main()
+{
+    char *str;
+    str="abc";
+    *(str+1)='p';
+}
+
+//improper use of scanf
+#include <stdio.h>
+
+int main()
+{
+	int n;
+	printf("enter a number\n");
+	scanf("%d",n);
+	return 0;
+}
+
+// stack overflow
+#include <stdio.h>
+
+int main()
+{
+	int arr[2000000000];
+    printf("%d\n",arr);
+	return 0;
+}
+
+//  dereferencing uninitialized pointer
+#include <stdio.h>
+int main()
+{
+	int* ptr;
+	int* nptr = NULL;
+	printf("%d %d", *ptr, *nptr);
+	return 0;
+}
